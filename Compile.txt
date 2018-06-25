@@ -1,0 +1,1 @@
+MSBUILD "D:\Me_Game\RO Offline\rathena repo\rAthena.sln" /p:PlatformToolset=v141 /m
