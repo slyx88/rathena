@@ -411,7 +411,7 @@ void initChangeTables(void)
 	set_sc( NPC_WEAPONBRAKER	, SC_BROKENWEAPON	, EFST_BROKENWEAPON	, SCB_NONE );
 	set_sc( NPC_ARMORBRAKE		, SC_BROKENARMOR	, EFST_BROKENARMOR	, SCB_NONE );
 	set_sc( NPC_CHANGEUNDEAD	, SC_CHANGEUNDEAD	, EFST_PROPERTYUNDEAD, SCB_DEF_ELE );
-	set_sc( NPC_POWERUP		, SC_INCHITRATE		, EFST_BLANK		, SCB_HIT );
+	set_sc( NPC_POWERUP		, SC_INCATKRATE		, EFST_BLANK		, SCB_HIT|SCB_BATK|SCB_WATK );
 	set_sc( NPC_AGIUP		, SC_INCFLEERATE	, EFST_BLANK		, SCB_FLEE );
 	add_sc( NPC_INVISIBLE		, SC_CLOAKING		);
 	set_sc( LK_AURABLADE		, SC_AURABLADE		, EFST_AURABLADE		, SCB_NONE );
@@ -1193,7 +1193,7 @@ void initChangeTables(void)
 	StatusChangeFlagTable[SC_INCMSPRATE] |= SCB_MAXSP;
 	StatusChangeFlagTable[SC_INCMHP] |= SCB_MAXHP;
 	StatusChangeFlagTable[SC_INCMSP] |= SCB_MAXSP;
-	StatusChangeFlagTable[SC_INCATKRATE] |= SCB_BATK|SCB_WATK;
+	StatusChangeFlagTable[SC_INCATKRATE] |= SCB_HIT|SCB_BATK|SCB_WATK;
 	StatusChangeFlagTable[SC_INCMATKRATE] |= SCB_MATK;
 	StatusChangeFlagTable[SC_INCDEFRATE] |= SCB_DEF;
 	StatusChangeFlagTable[SC_STRFOOD] |= SCB_STR;
@@ -6246,6 +6246,11 @@ static signed short status_calc_hit(struct block_list *bl, struct status_change 
 		hit -= sc->data[SC_ILLUSIONDOPING]->val2;
 	if (sc->data[SC_MTF_ASPD])
 		hit += sc->data[SC_MTF_ASPD]->val2;
+	if(sc->data[SC_INCATKRATE]){
+		if( bl->type == BL_MOB ){
+			hit += hit * 3;
+		}
+	}
 
 	return (short)cap_value(hit,1,SHRT_MAX);
 }

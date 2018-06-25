@@ -2031,6 +2031,12 @@ static int64 battle_calc_base_damage(struct block_list *src, struct status_data 
 
 	if (sc && sc->data[SC_MAXIMIZEPOWER])
 		atkmin = atkmax;
+	if (!sd){
+		if (sc && sc->data[SC_INCATKRATE]) {
+			atkmin += atkmin * 3;
+			atkmax += atkmax * 3;
+		}
+	}
 
 	//Weapon Damage calculation
 	if (!(flag&1))
