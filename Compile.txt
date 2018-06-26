@@ -1,0 +1,1 @@
+MSBUILD "C:\Users\Farid\Downloads\Compressed\rathena-master\rathena-master\rAthena.sln" /p:PlatformToolset=v141 /m

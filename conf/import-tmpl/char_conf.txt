@@ -1,0 +1,5 @@
+userid: root
+passwd: 12345
+login_ip: 127.0.0.1
+char_ip: 127.0.0.1
+pincode_enabled: no

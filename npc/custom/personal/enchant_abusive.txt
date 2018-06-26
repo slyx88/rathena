@@ -1,0 +1,303 @@
+ayothaya,144,116,4	script	Dylan	561,{
+
+if (checkweight(2537,1) == 0){
+	mes "You have too many things with you to do that. Throw out some of them and try again.";
+	close;
+	}
+
+if (MaxWeight - Weight < 1000){
+	mes "You don't have adequate capacity to carry these items.";
+	close;
+	}
+	
+disable_items;
+
+	mes "[Dylan]";
+	mes "Welcome stranger...";
+	mes "I am capable of enchanting Abusive Robe and Flattery Robe with powerful enchants.";
+	next;
+	switch (select("Begin Enchanting.", "Initialize enchantment.", "Exit conversation.")) {
+	
+		case 1:
+		
+			.@equip_id = getequipid(EQI_ARMOR);
+			if (!getequipisequiped (EQI_ARMOR)) {
+				mes "[Dylan]";
+				mes "Before we begin, please make sure you have put on your armor.";
+				close;
+				}
+			switch (.@equip_id) {
+			case 15146:
+			case 15147:
+			
+			
+			.@card0 = getequipcardid(EQI_ARMOR,0);
+			.@card1 = getequipcardid(EQI_ARMOR,1);
+			.@card2 = getequipcardid(EQI_ARMOR,2);
+			.@card3 = getequipcardid(EQI_ARMOR,3);
+			.@equip_name$ = getequipname(EQI_ARMOR);
+			.@equip_refine = getequiprefinerycnt(EQI_ARMOR);
+			//.@enchant_cost = 20;
+			//.@enchant_item$ = getitemname(6919);
+			
+			//if (countitem (6919) < 20) {
+				//mes "[Dylan]";
+				//mes "You don't have enough Honor Tokens.";
+				//mes "20 Honor Tokens are required for each enchantment.";
+				//close;
+				//}
+				
+			if (.@card2 > 0) {
+				mes "[Dylan]";
+				mes "This robe cannot be enchant any further.";
+				close;
+				}
+				
+			mes "[Dylan]";
+			mes "Each enchantment costs ^0000FF 20 Honor Token ^000000 and it takes up slot 3 and 4 of your robe.";
+			mes "Should we proceed?";
+			next;
+				switch (select ("Strength", "Agility", "Intelligence", "Dexterity", "Vitality", "Luck", "Cancel")) {
+				
+				case 1:
+					if (.@card3 == 0 && .@card2 == 0){
+						mes "[Dylan]";
+						mes "Your "+.@equip_name$+" has been enchanted in slot 4.";
+						.@card3 = callfunc("F_Rand",4994,4995,4996);
+					}
+						
+					else {
+						mes "[Dylan]";
+						mes "Your "+.@equip_name$+" has been enchanted in slot 3.";
+						.@card2 = callfunc("F_Rand",4994,4995,4996);
+					}
+		
+					specialeffect2 EF_ANGEL2;
+					//delitem 6919,20;
+					delequip EQI_ARMOR;
+					getitem2 .@equip_id,1,1,.@equip_refine,0,.@card0,0,.@card2,.@card3;
+					close;
+				
+				case 2:
+					if (.@card3 == 0 && .@card2 == 0){
+						mes "[Dylan]";
+						mes "Your "+.@equip_name$+" has been enchanted in slot 4.";
+						.@card3 = callfunc("F_Rand",4997,4998,4999);
+					}
+						
+					else {
+						mes "[Dylan]";
+						mes "Your "+.@equip_name$+" has been enchanted in slot 3.";
+						.@card2 = callfunc("F_Rand",4997,4998,4999);
+					}
+					
+					specialeffect2 EF_ANGEL2;
+					//delitem 6919,20;
+					delequip EQI_ARMOR;
+					getitem2 .@equip_id,1,1,.@equip_refine,0,.@card0,0,.@card2,.@card3;
+					close;
+
+				case 3:
+					if (.@card3 == 0 && .@card2 == 0){
+						mes "[Dylan]";
+						mes "Your "+.@equip_name$+" has been enchanted in slot 4.";
+						.@card3 = callfunc("F_Rand",29000,29001,29002);
+					}
+						
+					else {
+						mes "[Dylan]";
+						mes "Your "+.@equip_name$+" has been enchanted in slot 3.";
+						.@card2 = callfunc("F_Rand",29000,29001,29002);
+					}
+					
+					specialeffect2 EF_ANGEL2;
+					//delitem 6919,20;
+					delequip EQI_ARMOR;
+					getitem2 .@equip_id,1,1,.@equip_refine,0,.@card0,0,.@card2,.@card3;
+					close;
+					
+				case 4:
+					if (.@card3 == 0 && .@card2 == 0){
+						mes "[Dylan]";
+						mes "Your "+.@equip_name$+" has been enchanted in slot 4.";
+						.@card3 = callfunc("F_Rand",29003,29004,29005);
+					}
+						
+					else {
+						mes "[Dylan]";
+						mes "Your "+.@equip_name$+" has been enchanted in slot 3.";
+						.@card2 = callfunc("F_Rand",29003,29004,29005);
+					}
+					
+					specialeffect2 EF_ANGEL2;
+					//delitem 6919,20;
+					delequip EQI_ARMOR;
+					getitem2 .@equip_id,1,1,.@equip_refine,0,.@card0,0,.@card2,.@card3;
+					close;
+				
+				case 5:
+					if (.@card3 == 0 && .@card2 == 0){
+						mes "[Dylan]";
+						mes "Your "+.@equip_name$+" has been enchanted in slot 4.";
+						.@card3 = callfunc("F_Rand",29009,29010,29011);
+					}
+						
+					else {
+						mes "[Dylan]";
+						mes "Your "+.@equip_name$+" has been enchanted in slot 3.";
+						.@card2 = callfunc("F_Rand",29009,29010,29011);
+					}
+					
+					specialeffect2 EF_ANGEL2;
+					//delitem 6919,20;
+					delequip EQI_ARMOR;
+					getitem2 .@equip_id,1,1,.@equip_refine,0,.@card0,0,.@card2,.@card3;
+					close;
+						
+				case 6:
+					if (.@card3 == 0 && .@card2 == 0){
+						mes "[Dylan]";
+						mes "Your "+.@equip_name$+" has been enchanted in slot 4.";
+						.@card3 = callfunc("F_Rand",29006,29007,29008);
+					}
+						
+					else {
+						mes "[Dylan]";
+						mes "Your "+.@equip_name$+" has been enchanted in slot 3.";
+						.@card2 = callfunc("F_Rand",29006,29007,29008);
+					}
+					
+					specialeffect2 EF_ANGEL2;
+					//delitem 6919,20;
+					delequip EQI_ARMOR;
+					getitem2 .@equip_id,1,1,.@equip_refine,0,.@card0,0,.@card2,.@card3;
+					close;
+				
+				case 7:
+					
+					mes "[Dylan]";
+					mes "Let me know when you are ready.";
+					close;	
+				}	
+	
+			default:
+				mes "[Dylan]";
+				mes "This is not the right armor.";
+				close;
+			}
+	
+		case 2:
+	
+			.@equip_id = getequipid(EQI_ARMOR);
+			if (!getequipisequiped (EQI_ARMOR)) {
+				mes "[Dylan]";
+				mes "Before we begin, please make sure you have put on your armor.";
+				close;
+				}
+			
+			switch (.@equip_id) {
+			case 15146:
+			case 15147:
+			
+			
+			.@card0 = getequipcardid(EQI_ARMOR,0);
+			.@card1 = getequipcardid(EQI_ARMOR,1);
+			.@card2 = getequipcardid(EQI_ARMOR,2);
+			.@card3 = getequipcardid(EQI_ARMOR,3);
+			.@equip_name$ = getequipname(EQI_ARMOR);
+			.@equip_refine = getequiprefinerycnt(EQI_ARMOR);
+			//.@enchant_cost = 10;
+			.@enchant_item$ = getitemname(6919);
+			
+			
+			if (.@card3 == 0) {
+				mes "[Dylan]";
+				mes "Non enchanted "+.@equip_name$+" cannot be initialized.";
+				close;
+				}
+		
+			if (.@card2 == 0) {
+				mes "[Dylan]";
+				mes "Your "+.@equip_name$+" must be enchanted in both slot 3 and 4 before I can initialize it.";
+				close;
+				}
+			
+			
+			mes "[Dylan]";
+			mes "For initialization, all the previous enchants will be removed.";
+			mes "The armor, refine rate and the card will not affected.";
+			mes "There is no failure rate for this service.";
+			next;
+			switch (select ("Initialize my armor", "Quit")) {
+			
+			case 1:
+			
+				//if (countitem(6919) < 10) {
+					//mes "[Dylan]";
+					//mes "You don't have enough "+.@enchant_item$+"";
+					//mes "I need ^FF0000 "+(.@enchant_cost - countitem(6919))+" ^000000 more "+.@enchant_item$+"";
+					//close;
+					//}
+				
+				mes "[Dylan]";
+				mes "Let me reiterate,are you sure about this?";
+				if (select ("I'm sure", "I changed my mind") == 1) {
+					specialeffect2 EF_REPAIRWEAPON;
+					//delitem 6919,.@enchant_cost;
+					delequip EQI_ARMOR;
+					getitem2 .@equip_id,1,1,.@equip_refine,0,.@card0,0,0,0;
+					mes "Your "+.@equip_name$+" has been successfully initialized.";
+					close;
+					}
+				else {	
+					mes "Don't hesitate to use this service again.";
+					close;
+					}
+					
+			case 2:
+				mes "[Dylan]";
+				mes "It's yours decision.";
+				close;
+			}
+			
+			default:
+				mes "[Dylan]";
+				mes "This is not the right armor for initialization.";
+				close;
+			
+			}
+	
+		case 3:
+			mes "[Dylan]";
+			mes "Have a nice day,stranger...";
+			close;
+
+		
+			
+			
+	}			
+		
+}	
+	
+	
+
+	
+
+	
+	
+
+
+
+
+
+
+
+
+
+	
+		
+		
+			
+		
+	
+	

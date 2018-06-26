@@ -1,0 +1,15 @@
+-	script	DAYNNIGHT	-1,{
+OnInit:
+ if ((gettime(3) < 6) || (gettime(3) >= 22)) night;
+ end;
+
+OnClock0600:
+ announce "Good Morning",bc_all,0xEEEEEE;
+ day;
+ end;
+
+OnClock1800:
+ announce "Good Evening",bc_all,0xEEEEEE;
+ night;
+ end;
+}

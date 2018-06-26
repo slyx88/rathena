@@ -1,0 +1,349 @@
+ayothaya,144,112,4	script	Scientist	402,{
+
+if (checkweight(2537,1) == 0){
+	mes "You have too many things with you to do that. Throw out some of them and try again.";
+	close;
+	}
+
+if (MaxWeight - Weight < 1000){
+	mes "You don't have adequate capacity to carry these items.";
+	close;
+	}
+	
+disable_items;
+
+	mes "[Scientist]";	
+	mes "Welcome stranger!";
+	mes "I can enchant your Nightmare Biolab Headgear with two types of enchantments.The normal one and the special one.";
+	next; 
+	mes "[Scientist]";
+	mes "In order to get the special enchantments, you must have your headgear enchanted with 2 normal enchantments first";
+	next;
+	switch( select ("Normal Enchant(Slot 3 and 4)", "Special Enchant(Slot 2)", "Initialize", "Quit") ) {
+	
+	case 1:
+		
+		.@equip_id = getequipid(EQI_HEAD_TOP);
+		
+		if (!getequipisequiped(EQI_HEAD_TOP)) {
+			mes "[Scientist]";
+			mes "Please equip your headgear";
+			close;
+			}
+			 
+		switch(.@equip_id) {
+		
+			case 18971: 
+			case 18972:
+			case 18973:
+			case 18974:
+			case 18975:
+			case 18976:
+			case 18977:
+			case 18978:
+			case 18979:
+			case 18980:
+			case 18981:
+			case 18982:
+			case 18983:
+			case 18984:
+	
+		setarray .@enchant_cost[0],20,40;
+		.@equip_name$ = getequipname(EQI_HEAD_TOP);
+		.@card0 = getequipcardid(EQI_HEAD_TOP,0);
+		.@card1 = getequipcardid(EQI_HEAD_TOP,1);
+		.@card2 = getequipcardid(EQI_HEAD_TOP,2);
+		.@card3 = getequipcardid(EQI_HEAD_TOP,3);
+		.@equip_refine = getequiprefinerycnt(EQI_HEAD_TOP);
+		//.@enchant_item$ = getitemname(6608);
+		
+	
+		if (.@card1 > 0) {
+			mes "[Scientist]";
+			mes "I cannot enchant this headgear any further";
+			mes "Your "+.@equip_name$+" has reached its enchantment limit";
+			close;
+			}
+		
+		if (.@card2 > 0 && .@card3 > 0) {
+			mes "[Scientist]";
+			mes "You are not allowed to get normal enchantments at this point.";
+			mes "Please proceed to Special Enchant Section";
+			close;
+			}
+			
+		mes "[Scientist]";
+		mes "I am about to initiate normal enchantment process on your "+.@equip_name$+"";
+		mes "Have no worry.This process has 100% success rate!";
+		next;
+			switch (select("Proceed", "Quit")) {
+			case 1:
+				if (.@card3 == 0 && .@card2 == 0 && .@card1 == 0) {
+				
+					//if (countitem(6608) < .@enchant_cost[0]) {
+						//mes "[Scientist]";
+						//mes "You don't have enough ^FF0000 "+.@enchant_item$+" ^000000";
+						//close;
+						//}
+						
+					.@enchant_num = 0;
+					mes "[Scientist]";
+					mes "Slot 4 has been successfully enchanted!!";
+					.@card3 = callfunc("F_Rand",4704,4705,4706,4707,4708,4709,4714,4715,4716,4717,4718,4719,4724,4725,4726,4727,4728,4729,4734,4735,4736,4737,4738,4739,4744,4745,4746,4747,4748,4749,4754,4755,4756,4757,4758,4759);
+					}
+					
+				else {
+				
+					//if (countitem(6608) < .@enchant_cost[1]) {
+						//mes "[Scientist]";
+						//mes "You don't have enough ^FF0000 "+.@enchant_item$+" ^000000";
+						//close;
+						//}
+					
+						.@enchant_num = 1;
+						mes "[Scientist]";
+						mes "Slot 3 has been successfully enchanted!!";
+						.@card2 = callfunc("F_Rand",4704,4705,4706,4707,4708,4709,4714,4715,4716,4717,4718,4719,4724,4725,4726,4727,4728,4729,4734,4735,4736,4737,4738,4739,4744,4745,4746,4747,4748,4749,4754,4755,4756,4757,4758,4759);
+					}
+					
+					specialeffect2 EF_ANGEL2;
+					//delitem 6608,.@enchant_cost[.@enchant_num];
+					delequip EQI_HEAD_TOP;
+					getitem2 .@equip_id,1,1,.@equip_refine,0,.@card0,0,.@card2,.@card3;
+					close;
+					
+			case 2:
+				mes "[Scientist]";
+				mes "Let me know when you are ready for it";
+				close;
+			}	
+		
+		default:
+			mes "[Scientist]";
+			mes "This is not the right headgear for this enchant.";
+			close;
+	
+		}
+		
+	case 2:
+		
+		.@equip_id = getequipid(EQI_HEAD_TOP);
+		
+		if (!getequipisequiped(EQI_HEAD_TOP)) {
+			mes "[Scientist]";
+			mes "Please equip your headgear";
+			close;
+			}
+			
+		switch(.@equip_id) {
+		
+			case 18971: 
+			case 18972:
+			case 18973:
+			case 18974:
+			case 18975:
+			case 18976:
+			case 18977:
+			case 18978:
+			case 18979:
+			case 18980:
+			case 18981:
+			case 18982:
+			case 18983:
+			case 18984:
+		
+		.@equip_name$ = getequipname(EQI_HEAD_TOP);
+		.@card0 = getequipcardid(EQI_HEAD_TOP,0);
+		.@card1 = getequipcardid(EQI_HEAD_TOP,1);
+		.@card2 = getequipcardid(EQI_HEAD_TOP,2);
+		.@card3 = getequipcardid(EQI_HEAD_TOP,3);
+		.@equip_refine = getequiprefinerycnt(EQI_HEAD_TOP);
+		.@enchant_cost = 100;
+		//.@enchant_item$ = getitemname(6608);
+		
+		//if (countitem(6608) < 100) {
+			//mes "[Scientist]";
+			//mes "You don't have enough "+.@enchant_item$+"";
+			//mes "I need ^FF0000 "+(.@enchant_cost - countitem(6608))+" ^000000 more "+.@enchant_item$+" ";
+			//close;
+			//}
+		
+		if (.@card1 > 0) {
+			mes "[Scientist]";
+			mes "I cannot enchant this headgear any further";
+			mes "Your "+.@equip_name$+" has reached its enchantment limit";
+			close;
+			}
+			
+		if (.@card3 == 0 || .@card2 == 0) {
+			mes "[Scientist]";
+			mes "You are not ready for special enchants";
+			close;
+			}
+		
+		mes "[Scientist]";
+		mes "I am about to initiate special enchantment process on your "+.@equip_name$+"";
+			next;
+			switch (select("Proceed", "Quit")) {
+			
+			case 1:
+				
+				if (.@card1 == 0) {
+					.@card1 = callfunc("F_Rand",29065,29075,29085,29095,29105,29115);
+					specialeffect2 EF_ANGEL2;
+					//delitem 6608,.@enchant_cost;
+					delequip EQI_HEAD_TOP;
+					getitem2 .@equip_id,1,1,.@equip_refine,0,.@card0,.@card1,.@card2,.@card3;
+					mes "[Scientist]";
+					mes "Your "+.@equip_name$+"  has been enchanted with speical enchantment!!";
+					close;
+					}
+					
+			case 2:
+				mes "[Scientist]";
+				mes "Let me know when you are ready for it";
+				close;
+			}	
+		
+		default:
+			mes "[Scientist]";
+			mes "This is not the right headgear for this special enchant.";
+			close;
+
+		
+		}
+		
+	
+	case 3:
+		
+		.@equip_id = getequipid(EQI_HEAD_TOP);
+		
+		if (!getequipisequiped(EQI_HEAD_TOP)) {
+			mes "[Scientist]";
+			mes "Please equip your headgear";
+			close;
+			}
+			
+		switch(.@equip_id) {
+		
+			case 18971: 
+			case 18972:
+			case 18973:
+			case 18974:
+			case 18975:
+			case 18976:
+			case 18977:
+			case 18978:
+			case 18979:
+			case 18980:
+			case 18981:
+			case 18982:
+			case 18983:
+			case 18984:
+		
+		.@card0 = getequipcardid(EQI_HEAD_TOP,0);
+		.@card1 = getequipcardid(EQI_HEAD_TOP,1);
+		.@card2 = getequipcardid(EQI_HEAD_TOP,2);
+		.@card3 = getequipcardid(EQI_HEAD_TOP,3);
+		.@equip_refine = getequiprefinerycnt(EQI_HEAD_TOP);
+		.@int_cost = 30;
+		
+		//if (countitem(6608) < 30) {
+			//mes "[Scientist]";
+			//mes "You don't have enough material for this process";
+			//close;
+			//}
+		
+		if (.@card3 == 0) {
+			mes "[Scientist]";
+			mes "I can't initialize unenchanted Bio Lab Headgear at this moment";
+			close;
+			}
+
+		if (.@card2 == 0) {
+			mes "[Scientist]";
+			mes "I can't initialize your Nightmare Biolabs Headgear at this moment";
+			close;
+			}
+		
+		mes "[Scientist]";
+		mes "For initialization, all the previous enchants will be removed from your headgear";
+		mes "But your headgear, refine rate and card will not affected. There is no failure rate for this service";
+		next;
+		switch (select ("Initialize my headgear", "Quit")) {
+			
+			case 1:
+			
+				mes "[Scientist]";
+				mes "Let me reiterate,are you sure about this?";
+				next;
+				if (select ("I'm sure", "I changed my mind") == 1) {
+					specialeffect2 EF_REPAIRWEAPON;
+					//delitem 6608,.@int_cost;
+					delequip EQI_HEAD_TOP;
+					getitem2 .@equip_id,1,1,.@equip_refine,0,.@card0,0,0,0;
+					next;
+					mes "[Scientist]";
+					mes "Your headgear has been successfully initialized";
+					close;
+					}
+					
+				else{
+					mes "[Scientist]";
+					mes "Don't hesitate to use this service again";
+					close;
+					}
+			case 2:
+				mes "[Scientist]";
+				mes "It's yours decision";
+				close;
+		}		
+			
+		default:
+			mes "[Scientist]";
+			mes "This is not the right headgear for initialization.";
+			close;
+		
+		}
+		
+	case 4:
+		mes "[Scientist]";
+		mes "If you ever change your mind";
+		mes "I'm alwyas here";
+		mes "Trust me,these enchants are beneficial for you";
+		close;
+					
+			
+	}		
+		
+}	
+			
+			
+			
+			
+			
+		
+	
+	
+	
+
+	
+
+	
+	
+
+
+
+
+
+
+
+
+
+	
+		
+		
+			
+		
+	
+	
